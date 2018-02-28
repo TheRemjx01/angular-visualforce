@@ -1,0 +1,28 @@
+{
+  "name": "salesforce-ng5-remote",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheRemjx01/salesforce-ng5-remote.git"
+  },
+  "author": {
+    "name": "Nghia Nguyen",
+    "email": "remjx.is.me@gmail.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheRemjx01/salesforce-ng5-remote.git/issues"
+  },
+  "main": "salesforce-ng5-remote.umd.js",
+  "module": "salesforce-ng5-remote.js",
+  "jsnext:main": "salesforce-ng5-remote.js",
+  "typings": "salesforce-ng5-remote.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
