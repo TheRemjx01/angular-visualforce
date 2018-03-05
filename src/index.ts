@@ -1,35 +1,24 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import {NgModule, ModuleWithProviders, Optional, SkipSelf} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SampleComponent } from './sample.component';
-import { SampleDirective } from './sample.directive';
-import { SamplePipe } from './sample.pipe';
-import { NgRemoteService } from './sample.service';
-
-export * from './sample.component';
-export * from './sample.directive';
-export * from './sample.pipe';
-export * from './sample.service';
+import { VisualforceConfig, VisualforceService} from './visualforce.service';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
-  ],
-  exports: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
-  ]
+    imports: [CommonModule],
+    providers: [VisualforceService]
 })
-export class SampleModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SampleModule,
-      providers: [NgRemoteService]
-    };
+export class VisualforceModule {
+    constructor(@Optional() @SkipSelf() parentModule: VisualforceModule) {
+        if (parentModule) {
+            throw new Error('Visualforce module has already loaded. Import it in the app module only');
+        }
+    }
+
+  static forRoot(visualforceConfig: VisualforceConfig): ModuleWithProviders {
+      return {
+          ngModule: VisualforceModule,
+          providers: [
+              {provide: VisualforceConfig, useValue: visualforceConfig}
+          ]
+      };
   }
 }
